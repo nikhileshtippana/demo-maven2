@@ -87,6 +87,14 @@ public class TutorialControllerTests {
   }
 
   @Test
+  void shouldReturnListOfTutorialsWithInternalServerError() throws Exception {
+    when(tutorialRepository.findAll()).thenThrow(IllegalStateException.class);
+    mockMvc.perform(get("/api/tutorials"))
+        .andExpect(status().isInternalServerError())
+        .andDo(print());
+  }
+
+  @Test
   void shouldReturnListOfTutorialsWithFilter() throws Exception {
     List<Tutorial> tutorials = new ArrayList<>(
         Arrays.asList(new Tutorial(1, "Spring Boot @WebMvcTest", "Description 1", true),
