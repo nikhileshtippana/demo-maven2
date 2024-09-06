@@ -72,3 +72,6 @@ Fullstack:
 mvn test -Dtest=TutorialControllerTests
 ```
 
+```
+./mvnw -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121:sonar
+```
